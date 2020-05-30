@@ -5,12 +5,12 @@ from tile import Tile
 import constants
 
 class Game:
-    def __init__(self, surface, width, height):
+    def __init__(self, surface, width, height, size):
         self.surface = surface
         self.width = width
         self.height = height
         self.all_sprites = pygame.sprite.Group()
-        self.grid = self.generate_map(10)
+        self.grid = self.generate_map(size)
 
     def update(self):
         self.all_sprites.update()
@@ -20,12 +20,11 @@ class Game:
 
     def generate_map(self, size):
         schema = [[0 for x in range(0, size)] for y in range(0, size)] 
-        schema = self.plant_random_bomb_in_schema(schema, size, 10)
+        schema = self.plant_random_bomb_in_schema(schema, size, size * 2)
         schema = self.set_numbers_near_bombs(schema, size)
         self.add_sprites_from_schema(schema, size)
 
     def add_sprites_from_schema(self, schema, size):
-        # self.printer(schema)
         for y in range(0, size):
             for x in range(0, size):
                 tile_size = (self.width // size) - 1
