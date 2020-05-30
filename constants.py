@@ -1,0 +1,21 @@
+# Config
+WIDTH = 400
+HEIGHT = 400
+FPS = 30
+
+# Define colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
+
+# Tile type
+TILE_TYPE_BOMB = 9
+TILE_TYPE_DEFAULT = 0
+TILE_TYPE_1 = 1
+TILE_TYPE_2 = 2
+TILE_TYPE_3 = 3
+TILE_TYPE_4 = 4
+TILE_TYPE_5 = 5
+TILE_TYPE_6 = 6
