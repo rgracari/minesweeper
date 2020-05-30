@@ -13,7 +13,20 @@ class Game:
         self.grid = self.generate_map(size)
 
     def update(self):
-        self.all_sprites.update()
+        for sprite in self.all_sprites:
+            if pygame.mouse.get_pressed()[0] and sprite.rect.collidepoint(pygame.mouse.get_pos()):
+                if sprite.tile_type == constants.TILE_TYPE_BOMB:
+                    sprite.image.fill(constants.RED)
+                elif sprite.tile_type == constants.TILE_TYPE_DEFAULT:
+                    sprite.image.fill(constants.WHITE)
+                    print("DEFAULT!!!!")
+                else:
+                    sprite.image.fill(constants.WHITE)
+                    myfont = pygame.font.SysFont(constants.FONT, sprite.size // 2)
+                    text_surface = myfont.render(str(sprite.tile_type), True, (0, 0, 0))
+                    text_rect = text_surface.get_rect()
+                    text_rect.center = (sprite.size / 2, sprite.size / 2)
+                    sprite.image.blit(text_surface, text_rect)
     
     def draw(self):
         self.all_sprites.draw(self.surface)
