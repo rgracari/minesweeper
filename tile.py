@@ -7,10 +7,14 @@ class Tile(pygame.sprite.Sprite):
         super().__init__()
         self.tile_type = tile_type
         self.image = pygame.Surface((size, size))
-        self.image.fill(constants.WHITE)
+        if tile_type == constants.TILE_TYPE_BOMB:
+            self.image.fill(constants.RED)
+        else:
+            self.image.fill(constants.WHITE)
         self.rect = self.image.get_rect()
         self.rect.topleft = (y, x)
     
     def update(self):
         if pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos()):
-            print("CLICKED!")
+            if self.tile_type == constants.TILE_TYPE_BOMB:
+                print("BOOOOMB")
