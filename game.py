@@ -19,7 +19,6 @@ class Game:
                     sprite.image.fill(constants.RED)
                 elif sprite.tile_type == constants.TILE_TYPE_DEFAULT:
                     sprite.image.fill(constants.WHITE)
-                    print("DEFAULT!!!!")
                 else:
                     sprite.image.fill(constants.WHITE)
                     myfont = pygame.font.SysFont(constants.FONT, sprite.size // 2)
